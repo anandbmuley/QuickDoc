@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+#nav-panel ul li a {
+	color: red !important;
+	text-align: center;
+}
+
