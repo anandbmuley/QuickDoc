@@ -6,45 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <%@ include file="Include.jsp"%>
     <title>Create Document</title>
+    <script type="application/javascript">
+
+        $(document).ready(function(){
+            $('#custom-templates .typeahead').typeahead(null, {
+                name: 'best-pictures',
+                displayKey: 'value',
+                source: function(query,process){
+                    return $.getJSON('searchdoc',{txt:query},function(data){
+                        return process(data);
+                    });
+                },
+                templates: {
+                    empty: [
+                        '<div class="empty-message">',
+                        'Unable to find any document',
+                        '</div>'
+                    ].join('\n'),
+                    suggestion: Handlebars.compile('<p><strong>{{name}}</strong> – {{text}}</p>')
+                }
+            });
+        });
+
+    </script>
 </head>
 <body>
 <%@include file="Navigation.jsp"%>
 <div align="center">
     <div>
-        <form action="search">
+        <form action="searchdoc" method="post">
             <div class="table">
                 <div class="table-row">
                     <div class="table-cell">Search</div>
-                    <div class="table-cell">
-                        <input name="txt" class="required form-control" placeholder="Enter a name" type="text" />
+                    <div  id="custom-templates" class="table-cell">
+                        <input name="txt" class="required form-control typeahead" placeholder="Enter a name" type="text" />
                     </div>
                     <div class="table-cell">
                         <button type="submit" class="btn btn-primary" role="button">Search</button>
                     </div>
                 </div>
-            </div>
-        </form>
-        <form role="form" class="patient-form" action="update"
-              enctype="multipart/form-data" method="post">
-            <div class="details-container">
-                <div class="table">
-                    <div class="table-row">
-                        <div class="table-cell">
-                            <input name="name" class="required form-control" placeholder="Enter a name" type="text" />
-                        </div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-cell">
-                            <textarea name="text" class="required form-control" placeholder="Enter document content" rows="20" cols="70"></textarea>
-                        </div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-cell">
-                            <button type="submit" class="btn btn-primary" role="button">Save</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </form>
         <c:if test="${message != null}">

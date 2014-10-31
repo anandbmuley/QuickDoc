@@ -11,6 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/lib/moment.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/lib/timepicker.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/lib/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/lib/typehead.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/lib/handle-bars.js"></script>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
