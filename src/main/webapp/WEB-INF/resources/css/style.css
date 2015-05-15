@@ -736,3 +736,20 @@ button {
 .caption h3 {
 	color: #5CB85C;
 }
+
+.navbar{
+	background-color: #4980a1;
+}
+
+.navbar-header > a,.navbar-nav > li > a {
+	color : white;
+}
+
+.navbar-nav:HOVER{
+	background-color: inherit !important;
+}
+
+.nav > li > a:HOVER{
+	background-color: inherit;
+	color: #a8c7db;
+}

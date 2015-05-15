@@ -7,9 +7,6 @@
             select: function( event, ui ) {
                 $('#searchTitleBox').val(ui.item.value);
                 $('#searchFrm').submit();
-//                log( ui.item ?
-//                "Selected: " + ui.item.value + " aka " + ui.item.id :
-//                "Nothing selected, input was " + this.value );
             }
         });
 
@@ -19,9 +16,6 @@
             select: function( event, ui ) {
                 $('#searchTitleBox').val(ui.item.value);
                 $('#searchFrm').submit();
-//                log( ui.item ?
-//                "Selected: " + ui.item.value + " aka " + ui.item.id :
-//                "Nothing selected, input was " + this.value );
             }
         });
 
@@ -29,13 +23,7 @@
 
 </script>
 
-<style>
-    /*.ui-menu{*/
-        /*margin: 144px;*/
-    /*}*/
-</style>
-
-<nav role="navigation" class="navbar navbar-inverse">
+<nav role="navigation" class="navbar">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -53,12 +41,6 @@
           <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/notes/add">Create</a></li>
           </ul>
-           <%--<form method="post" action="search" class="navbar-form navbar-left" role="search">--%>
-                <%--<div class="form-group">--%>
-                    <%--<input name="title" type="text" class="form-control" placeholder="Search by title">--%>
-                <%--</div>--%>
-                <%--<button type="submit" class="btn btn-default">Search</button>--%>
-           <%--</form>--%>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" style="color: #ffffff;">Developer - Anand Muley</a></li>
             </ul>
