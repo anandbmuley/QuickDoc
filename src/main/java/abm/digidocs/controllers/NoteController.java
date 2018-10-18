@@ -28,9 +28,7 @@ public class NoteController {
 
     @RequestMapping("getdetails")
     public String getDetails(Model model,NoteModel noteModel){
-        System.out.println("Fetching details for : "+noteModel.getId());
         NoteModel note = noteService.searchById(noteModel.getId());
-        System.out.println("Searched : "+note);
         model.addAttribute("note",note);
         return Page.NOTE_DETAILS;
     }
@@ -42,7 +40,6 @@ public class NoteController {
 
     @RequestMapping("add")
     public String renderAddNote(){
-        System.out.println("Rendering Add Note...");
         return Page.ADD_NOTE;
     }
 
@@ -60,7 +57,6 @@ public class NoteController {
 
     @RequestMapping("addnew")
     public String addNote(NoteModel noteModel){
-        System.out.println("Adding Note : " + noteModel);
         noteService.add(noteModel);
         return renderAddNote();
     }
