@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <%@ include file="Include.jsp"%>
     <title>Note Details</title>
+      <%@include file="Navigation.jsp"%>
     <script type="application/javascript">
 
         $(document).ready(function(){
@@ -48,7 +49,7 @@
         });
 
     </script>
-    <%@include file="Navigation.jsp"%>
+
 </head>
 <body>
 <div class="container">
@@ -106,14 +107,17 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <c:forEach items="${passwords}" var="password">
-                    <div class="col-md-4">
+                    <div class="col-md-4" align="center">
                         <div id="copyToClipboardMessage" style="display:none">Copied to clipboard</div>
-                        <h2>${password.title}</h2>
-                        <div><a style="cursor:pointer;text-decoration:none" class="allowCopy" value="${password.username}">Username</a> </div>
-                        <div><a style="cursor:pointer;text-decoration:none" class="allowCopy" value="${password.password}">Password</a> </div>
-                        <div class="presented-dt"><fmt:formatDate value="${note.date}" pattern="dd-MMM-yyyy hh:mm:ss a"></fmt:formatDate></div>
-                        <p style="white-space: pre-wrap">${password.additionalDetails}</p>
-                        <p><div class="list-group-item-text presented-by">Additional Details : ${password.additionalDetails}</div></p>
+                        <div class="row" align="center">
+                            <h2>${password.title}</h2>
+                        </div>
+                        <div class="row" align="center">
+                            <div class="col-md-6" align="center"><a style="cursor:pointer;text-decoration:none" class="allowCopy" value="${password.username}">Username</a> </div>
+                            <div class="col-md-6" align="center"><a style="cursor:pointer;text-decoration:none" class="allowCopy" value="${password.password}">Password</a> </div>
+                        </div>
+                        <!-- <p style="white-space: pre-wrap">${password.additionalDetails}</p> -->
+                        <p><div class="list-group-item-text presented-by">${password.additionalDetails}</div></p>
                     </div>
 
                 </c:forEach>
