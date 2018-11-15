@@ -43,7 +43,10 @@ public class PasswordController extends AutoCompleteSearchController {
     @RequestMapping(value = "create", method = RequestMethod.POST)
     public ModelAndView createNew(PasswordModel passwordModel) {
         passwordService.save(passwordModel);
-        return mainPage();
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("message","Password saved successfully !");
+        mav.setViewName(Page.PASSWORDS_HOME);
+        return mav;
     }
 
     @RequestMapping("searchpassword")

@@ -53,14 +53,20 @@
 </head>
 <body>
 <div class="container">
+<c:if test="${message != null}">
+<div class="row" align="center">
+    <div class="success-message">${message}</div>
+</div>
+</c:if>
 <c:if test="${fn:length(passwords)==0}">
+<div class="row">
 <form role="form" action="create" method="post">
             <div class="col-md-4"></div>
-			<div align="center" class="jumbotron col-md-4">
+			<div align="center" class="jumbotron col-md-4" style="padding-top:15px;padding-bottom:10px;">
 						<div class="table">
 						    <div class="table-row">
-                                <div class="table-cell">
-                                    <div style="font-size:20px;">Save New Password</div>
+                                <div class="table-cell" style="font-size:20px;">
+                                    Save New Password
                                 </div>
                             </div>
                             <div class="table-row">
@@ -98,33 +104,33 @@
 
 			</div>
 		</form>
+</div>
 </c:if>
 <div class="container">
-        <c:if test="${fn:length(passwords)>0}">
+    <c:if test="${fn:length(passwords)>0}">
         <form id="detailsFrm" action="getdetails" method="post">
         <input id="noteId" name="id" type="hidden" value="${note.id}"/>
             <!-- Example row of columns -->
-            <div class="row">
-                <div class="col-md-4"></div>
                 <c:forEach items="${passwords}" var="password">
-                    <div class="col-md-4" align="center">
-                        <div id="copyToClipboardMessage" style="display:none">Copied to clipboard</div>
-                        <div class="row" align="center">
-                            <h2>${password.title}</h2>
+                   <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4" align="center">
+                            <div id="copyToClipboardMessage" style="display:none">Copied to clipboard</div>
+                            <div class="row" align="center">
+                                <h2>${password.title}</h2>
+                            </div>
+                            <div class="row" align="center">
+                                <div class="col-md-6" align="center"><a style="cursor:pointer;text-decoration:none" class="allowCopy" value="${password.username}">Username</a> </div>
+                                <div class="col-md-6" align="center"><a style="cursor:pointer;text-decoration:none" class="allowCopy" value="${password.password}">Password</a> </div>
+                            </div>
+                            <!-- <p style="white-space: pre-wrap">${password.additionalDetails}</p> -->
+                            <p><div class="list-group-item-text presented-by">${password.additionalDetails}</div></p>
                         </div>
-                        <div class="row" align="center">
-                            <div class="col-md-6" align="center"><a style="cursor:pointer;text-decoration:none" class="allowCopy" value="${password.username}">Username</a> </div>
-                            <div class="col-md-6" align="center"><a style="cursor:pointer;text-decoration:none" class="allowCopy" value="${password.password}">Password</a> </div>
-                        </div>
-                        <!-- <p style="white-space: pre-wrap">${password.additionalDetails}</p> -->
-                        <p><div class="list-group-item-text presented-by">${password.additionalDetails}</div></p>
-                    </div>
-
+                   </div>
+                   <br/><br/><br/><br/>
                 </c:forEach>
-            </div>
         </form>
-        </c:if>
-
+    </c:if>
 </div>
 </div>
 </body>

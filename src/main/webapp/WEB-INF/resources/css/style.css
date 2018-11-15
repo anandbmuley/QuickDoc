@@ -753,3 +753,10 @@ button {
 	background-color: inherit;
 	color: #a8c7db;
 }
+
+.success-message{
+    font-size: 15px;
+    color: green;
+    margin-bottom: 10px;
+    font-weight:bold;
+}
