@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Document(collection = DBCollections.NOTES)
-public class NoteModel {
+public class NoteModel extends SearcheableModel {
 
     @Id
     private String id;

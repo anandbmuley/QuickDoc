@@ -5,4 +5,7 @@ public interface Page {
     String INDEX = "Index";
     String SEARCH_NOTE = "SearchNote";
     String NOTE_DETAILS = "NoteDetails";
+
+    String PASSWORDS_HOME = "Passwords";
+
 }

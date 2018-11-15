@@ -1,6 +1,7 @@
 package abm.digidocs.services;
 
 import abm.digidocs.daos.NoteDao;
+import abm.digidocs.daos.SearcheableDao;
 import abm.digidocs.models.NoteModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private NoteDao noteDao;
 
+    @Autowired
+    private SearcheableDao<NoteModel,String> noteSearchDao;
+
     @Override
     public void add(NoteModel noteModel) {
         Date today = new Date();
@@ -23,7 +27,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteModel> searchByTitle(String title) {
-        return noteDao.searchByTitle(title);
+        return noteSearchDao.searchByTitle(title);
     }
 
     @Override
@@ -43,6 +47,6 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteModel> searchByTag(String text) {
-        return noteDao.searchByTag(text);
+        return noteSearchDao.searchByTag(text);
     }
 }

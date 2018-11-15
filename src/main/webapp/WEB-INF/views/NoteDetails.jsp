@@ -10,6 +10,25 @@
     <script type="application/javascript">
 
         $(document).ready(function(){
+            $('#searchBox').autocomplete({
+                source: "./search?searchBy=2",
+                minLength: 2,
+                select: function( event, ui ) {
+                    $('#searchTitleBox').val(ui.item.value);
+
+                    $('#searchFrm').submit();
+                }
+            });
+
+            $('#searchTitleBox').autocomplete({
+                source: "./search?searchBy=1",
+                minLength: 2,
+                select: function( event, ui ) {
+                    $('#searchTitleBox').val(ui.item.value);
+                    $('#searchFrm').submit();
+                }
+            });
+
             fnGenerateTags('${note.tags}','tags');
             $('#noteDataTA').expandable();
         });

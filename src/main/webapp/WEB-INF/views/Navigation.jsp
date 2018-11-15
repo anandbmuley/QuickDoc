@@ -1,28 +1,3 @@
-<script type="application/javascript">
-
-    $(document).ready(function(){
-        $('#searchBox').autocomplete({
-            source: "./search?searchBy=2",
-            minLength: 2,
-            select: function( event, ui ) {
-                $('#searchTitleBox').val(ui.item.value);
-                $('#searchFrm').submit();
-            }
-        });
-
-        $('#searchTitleBox').autocomplete({
-            source: "./search?searchBy=1",
-            minLength: 2,
-            select: function( event, ui ) {
-                $('#searchTitleBox').val(ui.item.value);
-                $('#searchFrm').submit();
-            }
-        });
-
-    });
-
-</script>
-
 <nav role="navigation" class="navbar">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -40,6 +15,7 @@
         <div id="bs-example-navbar-collapse-9" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/notes/add">Create</a></li>
+            <li><a href="${pageContext.request.contextPath}/passwords/home">Passwords</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" style="color: #ffffff;">Developer - Anand Muley</a></li>
