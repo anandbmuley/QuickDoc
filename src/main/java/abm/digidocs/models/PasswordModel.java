@@ -1,11 +1,14 @@
 package abm.digidocs.models;
 
+import abm.digidocs.facade.Module;
 import abm.digidocs.utils.DBCollections;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import static abm.digidocs.facade.Module.PASSWORDS;
+
 @Document(collection = DBCollections.PASSWORDS)
-public class PasswordModel extends SearcheableModel{
+public class PasswordModel extends SearcheableModel {
 
     @Id
     private String id;
@@ -13,6 +16,10 @@ public class PasswordModel extends SearcheableModel{
     private String username;
     private String password;
     private String additionalDetails;
+
+    public PasswordModel() {
+        super(PASSWORDS);
+    }
 
     public String getId() {
         return id;

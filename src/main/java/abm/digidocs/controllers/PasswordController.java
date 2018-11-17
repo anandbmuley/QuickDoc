@@ -28,8 +28,8 @@ public class PasswordController extends AutoCompleteSearchController {
     private SearchService<PasswordModel, String> searchService;
 
     @Autowired
-    public PasswordController(@Qualifier("passwordAutoCompleteSearchService") AutoCompleteSearchService<SearchNoteModel, NoteJson> noteAutoCompleteSearchService) {
-        super(noteAutoCompleteSearchService);
+    public PasswordController(@Qualifier("passwordAutoCompleteSearchService") AutoCompleteSearchService<SearchNoteModel, NoteJson> passwordAutoCompleteSearchService) {
+        super(passwordAutoCompleteSearchService);
     }
 
     @RequestMapping("home")
@@ -44,7 +44,7 @@ public class PasswordController extends AutoCompleteSearchController {
     public ModelAndView createNew(PasswordModel passwordModel) {
         passwordService.save(passwordModel);
         ModelAndView mav = new ModelAndView();
-        mav.addObject("message","Password saved successfully !");
+        mav.addObject("message", "Password saved successfully !");
         mav.setViewName(Page.PASSWORDS_HOME);
         return mav;
     }

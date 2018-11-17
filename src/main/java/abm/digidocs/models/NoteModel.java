@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
 
+import static abm.digidocs.facade.Module.NOTES;
+
 @Document(collection = DBCollections.NOTES)
 public class NoteModel extends SearcheableModel {
 
@@ -20,10 +22,11 @@ public class NoteModel extends SearcheableModel {
     private List<String> tags;
 
     public NoteModel() {
-
+        super(NOTES);
     }
 
     public NoteModel(String title, String content, String presenter, Date date) {
+        this();
         this.title = title;
         this.content = content;
         this.presenter = presenter;

@@ -1,6 +1,18 @@
 @CHARSET "UTF-8";
 
 
+.site-title{
+    font-size: 40px;
+    color: #4980a1;
+    position : relative;
+    margin-top: 15%;
+}
+
+.search-box {
+    margin-top: 5%;
+    width: 60%;
+}
+
 .copyright{
 	color: #d2322d;
 }

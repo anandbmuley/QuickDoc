@@ -10,16 +10,16 @@ import java.util.List;
 
 public abstract class AutoCompleteSearchController {
 
-    private AutoCompleteSearchService<SearchNoteModel, NoteJson> noteAutoCompleteSearchService;
+    private AutoCompleteSearchService<SearchNoteModel, NoteJson> searchService;
 
-    public AutoCompleteSearchController(AutoCompleteSearchService<SearchNoteModel, NoteJson> noteAutoCompleteSearchService) {
-        this.noteAutoCompleteSearchService = noteAutoCompleteSearchService;
+    public AutoCompleteSearchController(AutoCompleteSearchService<SearchNoteModel, NoteJson> searchService) {
+        this.searchService = searchService;
     }
 
     @ResponseBody
     @RequestMapping("search")
     public List<NoteJson> searchNote(SearchNoteModel searchNoteModel) {
-        return noteAutoCompleteSearchService.search(searchNoteModel);
+        return searchService.search(searchNoteModel);
     }
 
 }

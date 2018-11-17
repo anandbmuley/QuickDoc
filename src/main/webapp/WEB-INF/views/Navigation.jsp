@@ -23,7 +23,8 @@
 
 </script>
 
-<nav role="navigation" class="navbar">
+    <%@include file="HomeNavigation.jsp"%>
+    <nav role="navigation" class="navbar navbar-fixed-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -33,14 +34,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="${pageContext.request.contextPath}/notes/index" class="navbar-brand">QuickDoc</a>
+          <a href="${pageContext.request.contextPath}/home" class="navbar-brand">QuickDoc</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div id="bs-example-navbar-collapse-9" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/notes/add">Create</a></li>
-            <li><a href="${pageContext.request.contextPath}/passwords/home">Passwords</a></li>
+            <li><a href="${pageContext.request.contextPath}/notes/add">NOTES</a></li>
+            <li><a href="${pageContext.request.contextPath}/passwords/home">PASSWORDS</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" style="color: #ffffff;">Developer - Anand Muley</a></li>
@@ -48,6 +49,8 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
+    <br/><br/>
     <div class="ui-widget">
         <form id="searchFrm" method="post" action="searchnote" role="form">
            <div class="table">
