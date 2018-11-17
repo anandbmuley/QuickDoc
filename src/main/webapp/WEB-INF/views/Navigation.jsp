@@ -24,7 +24,7 @@
 </script>
 
     <%@include file="HomeNavigation.jsp"%>
-    <nav role="navigation" class="navbar navbar-fixed-top">
+    <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -44,7 +44,7 @@
             <li><a href="${pageContext.request.contextPath}/passwords/home">PASSWORDS</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" style="color: #ffffff;">Developer - Anand Muley</a></li>
+                <li><a href="#">Developer - Anand Muley</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

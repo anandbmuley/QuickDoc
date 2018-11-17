@@ -31,7 +31,7 @@
 
     <div align="center" class="container">
         <div>
-            <img src="resources/images/QuickDocLogo.svg" alt="QuickDocLogo" width="50%"/>
+            <img src="resources/images/QuickDocLogo.svg" alt="QuickDocLogo" width="40%"/>
         </div>
         <form id="homePageSearchFrm" role="form" class="patient-form" action="home/search-all" enctype="multipart/form-data" method="post">
             <div class="row search-box">
