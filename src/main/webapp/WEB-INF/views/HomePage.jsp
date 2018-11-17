@@ -30,7 +30,9 @@
     <%@ include file="HomeNavigation.jsp"%>
 
     <div align="center" class="container">
-        <div class="site-title">QuickDoc</div>
+        <div>
+            <img src="resources/images/QuickDocLogo.svg" alt="QuickDocLogo" width="50%"/>
+        </div>
         <form id="homePageSearchFrm" role="form" class="patient-form" action="home/search-all" enctype="multipart/form-data" method="post">
             <div class="row search-box">
                 <input id="searchTitleBox" name="title" class="required form-control input-lg" placeholder="Search by title" type="text" />
