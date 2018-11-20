@@ -771,3 +771,13 @@ button {
     margin-bottom: 10px;
     font-weight:bold;
 }
+
+.notes-display-home{
+    margin-top: 2%;
+    border: solid 1px #b7b7b7;
+    background-color: #ededed;
+    font-size: 20px;
+    padding: 2%;
+    border-radius: 10px;
+    color: #777777;
+}

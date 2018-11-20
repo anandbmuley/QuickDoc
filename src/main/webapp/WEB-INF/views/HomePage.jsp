@@ -6,15 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <%@ include file="Include.jsp"%>
 <title>Create Document</title>
+<script type="application/javascript" src="${pageContext.request.contextPath}/resources/js/passwords.js"></script>
 <script type="application/javascript">
 
     $(document).ready(function(){
 
-        $('#searchTitleBox').autocomplete({
+        $('#homeSearchTitleBox').autocomplete({
             source: "home/search?searchBy=1",
             minLength: 2,
             select: function( event, ui ) {
-                $('#searchTitleBox').val(ui.item.value);
+                $('#homeSearchTitleBox').val(ui.item.value);
                 $('#homePageSearchFrm').submit();
             }
         });
@@ -35,7 +36,7 @@
         </div>
         <form id="homePageSearchFrm" role="form" class="patient-form" action="home/search-all" enctype="multipart/form-data" method="post">
             <div class="row search-box">
-                <input id="searchTitleBox" name="title" class="required form-control input-lg" placeholder="Search by title" type="text" />
+                <input id="homeSearchTitleBox" name="title" class="required form-control input-lg" placeholder="Search by title" type="text" />
             </div>
         </form>
     </div>
@@ -61,21 +62,21 @@
                </div>
             </c:when>
             <c:when test="${searchResult.module == 'NOTES'}">
-                <form id="detailsFrm" action="getdetails" method="post">
-                    <input id="noteId" name="id" type="hidden" value="${searchResult.id}"/>
-                    <!-- Example row of columns -->
-                    <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <h2>${note.title}</h2>
-                                <%--<h4 class="project-name">${searchResult.projectName}</h4>--%>
-                                <div class="presented-dt"><fmt:formatDate value="${searchResult.date}" pattern="dd-MMM-yyyy hh:mm:ss a"></fmt:formatDate></div>
-                                <p style="white-space: pre-wrap">${searchResult.content}</p>
-                                <!-- <p><div class="list-group-item-text presented-by">Presented By : ${searchResult.presenter}</div></p> -->
-                                <!--<p><button type="button" class="btn btn-default" role="button" onclick="fnSubmit('${searchResult.id}')">View details »</button></p>-->
-                            </div>
-                    </div>
-                </form>
+                    <form id="detailsFrm" action="getdetails" method="post">
+                        <input id="noteId" name="id" type="hidden" value="${searchResult.id}"/>
+                        <!-- Example row of columns -->
+                        <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6 notes-display-home">
+                                    <h2>${note.title}</h2>
+                                    <%--<h4 class="project-name">${searchResult.projectName}</h4>--%>
+                                    <div class="presented-dt"><fmt:formatDate value="${searchResult.date}" pattern="dd-MMM-yyyy hh:mm:ss a"></fmt:formatDate></div>
+                                    <p style="white-space: pre-wrap">${searchResult.content}</p>
+                                    <!-- <p><div class="list-group-item-text presented-by">Presented By : ${searchResult.presenter}</div></p> -->
+                                    <!--<p><button type="button" class="btn btn-default" role="button" onclick="fnSubmit('${searchResult.id}')">View details »</button></p>-->
+                                </div>
+                        </div>
+                    </form>
             </c:when>
            </c:choose>
            <br/><br/><br/><br/>
