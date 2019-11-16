@@ -1,8 +1,10 @@
 package abm.digidocs.services;
 
+import abm.digidocs.formatters.Format;
+
 import java.util.List;
 
-public interface CrudService<Model,Id> {
+public interface CrudService<Model, Id> {
 
     void save(Model model);
 
@@ -13,5 +15,7 @@ public interface CrudService<Model,Id> {
     Model findOne(Id id);
 
     List<Model> findAll();
+
+    String findAll(Format format);
 
 }

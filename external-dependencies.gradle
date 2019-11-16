@@ -1,0 +1,53 @@
+def SpringVersion = '4.0.0.RELEASE'
+def MongoVersion = '2.12.2'
+def JacksonVersion = '2.10.1'
+def JMockVersion = '2.6.0'
+def SpringDataMongoVersion = '1.6.0.RELEASE'
+
+ext {
+
+    spring = [
+            web           : "org.springframework:spring-web:${SpringVersion}",
+            webmvc        : "org.springframework:spring-webmvc:${SpringVersion}",
+            core          : "org.springframework:spring-core:${SpringVersion}",
+            beans         : "org.springframework:spring-beans:${SpringVersion}",
+            expression    : "org.springframework:spring-expression:${SpringVersion}",
+            contextSupport: "org.springframework:spring-context-support:${SpringVersion}",
+            jdbc          : "org.springframework:spring-jdbc:${SpringVersion}",
+            mongo         : "org.springframework.data:spring-data-mongodb:${SpringDataMongoVersion}",
+            test          : "org.springframework:spring-test:${SpringVersion}"
+    ]
+
+    javax = [
+            jstl: 'javax.servlet:jstl:1.2',
+            el  : 'javax.el:javax.el-api:2.2.4'
+    ]
+
+    mongoDB = "org.mongodb:mongo-java-driver:${MongoVersion}"
+
+    fasterXml = [
+            databind : "com.fasterxml.jackson.core:jackson-databind:${JacksonVersion}",
+            core : "com.fasterxml.jackson.core:jackson-core:${JacksonVersion}",
+            jdk8 : "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${JacksonVersion}",
+            csvdata : "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:${JacksonVersion}"
+    ]
+
+    commons = [
+            fileupload: "commons-fileupload:commons-fileupload:1.2.1",
+            io        : "commons-io:commons-io:2.4",
+            xmlapis   : "xml-apis:xml-apis:1.4.01",
+            lang      : 'commons-lang:commons-lang:2.6'
+    ]
+
+    jsonlib = 'org.json:json:20090211'
+
+    servlet = [
+            api: 'javax.servlet:javax.servlet-api:3.0.1'
+    ]
+
+    validation = [
+            javax    : 'javax.validation:validation-api:1.1.0.Final',
+            hibernate: 'org.hibernate:hibernate-validator:5.1.3.Final'
+    ]
+
+}

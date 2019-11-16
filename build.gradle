@@ -1,97 +1,65 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
-apply plugin: 'jetty'
-apply plugin: 'jacoco'
 
-sourceCompatibility = 1.7
+apply plugin: 'groovy'
+apply plugin: 'org.akhikhl.gretty'
+
+apply from: 'external-dependencies.gradle'
+
+sourceCompatibility = 1.8
 
 version = '1.0'
-def SpringVersion = '4.0.0.RELEASE'
-def MongoVersion = '2.12.2'
-def JacksonVersion = '2.2.3'
-def JMockVersion = '2.6.0'
-def HamcrestCore = '1.3'
-def HamcrestLib = '1.3'
-def testNG = '6.1.1'
-def SpringDataMongoVersion = '1.6.0.RELEASE'
 
-httpPort = 3020
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Pairing Stories'
+    }
+    zip64 = true
+}
 
-ext {
-
-    spring = [
-            web           : "org.springframework:spring-web:${SpringVersion}",
-            webmvc        : "org.springframework:spring-webmvc:${SpringVersion}",
-            core          : "org.springframework:spring-core:${SpringVersion}",
-            beans         : "org.springframework:spring-beans:${SpringVersion}",
-            expression    : "org.springframework:spring-expression:${SpringVersion}",
-            contextSupport: "org.springframework:spring-context-support:${SpringVersion}",
-            jdbc          : "org.springframework:spring-jdbc:${SpringVersion}",
-            mongo         : "org.springframework.data:spring-data-mongodb:${SpringDataMongoVersion}",
-            test          : "org.springframework:spring-test:${SpringVersion}"
-    ]
-
-    javax = [
-            jstl: 'javax.servlet:jstl:1.2',
-            el  : 'javax.el:javax.el-api:2.2.4'
-    ]
-
-    testNG = "org.testng:testng:${testNG}"
-    jmock = "org.jmock:jmock:${JMockVersion}"
-    hamcrest = [
-            core   : "org.hamcrest:hamcrest-core:${HamcrestCore}",
-            library: "org.hamcrest:hamcrest-library:${HamcrestLib}"
-    ]
-
-    mongoDB = "org.mongodb:mongo-java-driver:${MongoVersion}"
-
-    fasterXml = "com.fasterxml.jackson.core:jackson-databind:${JacksonVersion}"
-
-    commons = [
-            fileupload: "commons-fileupload:commons-fileupload:1.2.1",
-            io        : "commons-io:commons-io:2.4",
-            xmlapis   : "xml-apis:xml-apis:1.4.01",
-            lang      : 'commons-lang:commons-lang:2.6'
-    ]
-
-    jsonlib = 'org.json:json:20090211'
-
-    servlet = [
-            api: 'javax.servlet:javax.servlet-api:3.0.1'
-    ]
-
-    validation = [
-            javax    : 'javax.validation:validation-api:1.1.0.Final',
-            hibernate: 'org.hibernate:hibernate-validator:5.1.3.Final'
-    ]
-
+war{
+    zip64 = true
 }
 
 test {
     include 'src/test/java**'
 }
 
-
-jacocoTestReport {
-    reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination "${buildDir}/JacocoHtml"
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "https://jcenter.bintray.com"
+        }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
-    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+    dependencies {
+        classpath 'com.bmuschko:gradle-cargo-plugin:2.2.3'
+        classpath "gradle.plugin.org.akhikhl.gretty:gretty:2.0.0"
+    }
+}
+
+gretty {
+    httpPort = 8091
+    scanInterval = 1
+//	host = '127.0.0.1'
+    servletContainer = 'jetty8'
+    managedClassReload = true
+    jacocoEnabled = false
 }
 
 repositories {
+    jcenter()
     mavenCentral()
 }
 
 dependencies {
     compile spring.web, spring.webmvc, spring.core, spring.beans, spring.expression, spring.contextSupport
-    compile mongoDB, spring.mongo, fasterXml, javax.jstl, jsonlib, javax.el
+    compile mongoDB, spring.mongo, fasterXml.core,fasterXml.databind,fasterXml.jdk8, javax.jstl, jsonlib, javax.el
     compile commons.fileupload, commons.io, commons.xmlapis, spring.test, commons.lang
+    compile fasterXml.csvdata
     compile validation.javax, validation.hibernate
     providedCompile servlet.api
-    testCompile testNG, jmock, hamcrest.core, hamcrest.library
 }

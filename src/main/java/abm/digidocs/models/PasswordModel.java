@@ -1,13 +1,16 @@
 package abm.digidocs.models;
 
-import abm.digidocs.facade.Module;
 import abm.digidocs.utils.DBCollections;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Base64;
 
 import static abm.digidocs.facade.Module.PASSWORDS;
 
 @Document(collection = DBCollections.PASSWORDS)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PasswordModel extends SearcheableModel {
 
     @Id
@@ -55,5 +58,17 @@ public class PasswordModel extends SearcheableModel {
 
     public void setAdditionalDetails(String additionalDetails) {
         this.additionalDetails = additionalDetails;
+    }
+
+    public void encrypt() {
+        password = Base64.getEncoder().encodeToString(password.getBytes());
+    }
+
+    public void decrypt() {
+        password = new String(Base64.getDecoder().decode(password));
+    }
+
+    public void clearId() {
+        id = null;
     }
 }

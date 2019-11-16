@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class PasswordDao implements CrudDao<PasswordModel, String>, SearcheableDao<PasswordModel, String> {
@@ -32,7 +33,10 @@ public class PasswordDao implements CrudDao<PasswordModel, String>, SearcheableD
     public List<PasswordModel> searchByTitle(String title) {
         Query query = new Query(Criteria.where("title").regex(title, "i"));
         //return this.mongoOperations.find(query, NoteModel.class, DBCollections.NOTES);
-        return mongoOperations.find(query, PasswordModel.class);
+        return mongoOperations.find(query, PasswordModel.class).stream().map($ -> {
+            $.decrypt();
+            return $;
+        }).collect(Collectors.toList());
     }
 
     @Override
